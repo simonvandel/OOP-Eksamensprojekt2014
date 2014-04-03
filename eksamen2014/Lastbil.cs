@@ -18,10 +18,10 @@ namespace eksamen2014
         }
         
 
-        public double Lastevne { get; private set; }
-        public double Højde { get; private set; }
-        public double Vægt { get; private set; }
-        public double Længde { get; private set; }
+        public double Lastevne { get;private  set; }
+        public double Højde { get; set; }
+        public double Vægt { get;set; }
+        public double Længde { get;  set; }
         // TODO : kørekorttype
     }
 }

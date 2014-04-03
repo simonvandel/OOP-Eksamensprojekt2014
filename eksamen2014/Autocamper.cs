@@ -18,6 +18,6 @@ namespace eksamen2014
             get { return 6.2; }
         }
         
-        // TODO alt
+        // TODO alt. Husk override varmesystem
     }
 }

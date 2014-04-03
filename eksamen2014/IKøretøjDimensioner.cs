@@ -8,8 +8,8 @@ namespace eksamen2014
 {
     interface IKøretøjDimensioner
     {
-        double Højde { get; private set; }
-        double Vægt { get; private set; }
-        double Længde { get; private set; }
+        double Højde { get; set; }
+        double Vægt { get; set; }
+        double Længde { get; set; }
     }
 }

@@ -14,6 +14,7 @@ namespace eksamen2014
 
         private string _navn;
         private double _km;
+        private string _registreringsnummer;
         private double _nyPris;
         protected double _motorstørrelse;
         protected abstract double _minMotorstørrelse { get;}
@@ -45,7 +46,16 @@ namespace eksamen2014
                     _km = value;
                 } 
         }
-        public String Registreringsnummer { get; set; } // TODO registreringsnummer
+        public String Registreringsnummer { 
+            get { 
+                int antalSynligeTegn = _registreringsnummer.Count() - 4;
+                string synligeTegn = _registreringsnummer.Substring(2, antalSynligeTegn);
+                return string.Format("**{0}**", synligeTegn);
+                }
+            set { 
+                // TODO
+                }
+        } // TODO registreringsnummer
         public int Årgang { get; private set; }
         public double NyPris { 
             get {
@@ -57,7 +67,7 @@ namespace eksamen2014
                 }
         }
         public bool Trækkrog { get; set; } // TODO virtual
-        public abstract EnumKørekortType KørekortType { get; private set; }
+        //public abstract EnumKørekortType KørekortType { get; set; } TODO : kørekorttype
         public double Motorstørrelse
         {
             get
@@ -78,7 +88,7 @@ namespace eksamen2014
         }
         public double KmPerLiter { get; set; }
         public EnumBrændstof Brændstof { get; set; } // TODO virtual
-        public EnumEnergiklasse Energiklasse { get; } // TODO logic
+        //public virtual EnumEnergiklasse Energiklasse { get { } } // TODO logic
 
         public override string ToString() 
         {
