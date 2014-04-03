@@ -24,6 +24,13 @@ namespace eksamen2014
         public double Vægt { get;  set; }
         public double Længde { get;  set; }
 
-        // TODO kørekorttype
+        public override EnumKørekortType KørekortType
+        {
+            get
+            {
+                if (HarTrækkrog) return EnumKørekortType.DE;
+                else return EnumKørekortType.D;
+            }
+        }
     }
 }

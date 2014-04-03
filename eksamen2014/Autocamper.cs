@@ -19,5 +19,9 @@ namespace eksamen2014
         }
         
         // TODO alt. Husk override varmesystem
+        public override EnumKørekortType KørekortType
+        {
+            get { return EnumKørekortType.B; }
+        }
     }
 }

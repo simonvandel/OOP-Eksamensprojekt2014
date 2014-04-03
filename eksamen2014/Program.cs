@@ -10,6 +10,10 @@ namespace eksamen2014
     {
         static void Main(string[] args)
         {
+            Personbil p = new PrivatPersonbil("Audi A6", 2009, "AB12345");
+            Console.WriteLine(p);
+            Console.WriteLine(p.NyPris);
+            Console.ReadLine();
         }
     }
 }

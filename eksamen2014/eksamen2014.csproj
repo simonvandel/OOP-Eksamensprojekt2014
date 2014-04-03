@@ -43,10 +43,16 @@
   <ItemGroup>
     <Compile Include="Autocamper.cs" />
     <Compile Include="Bus.cs" />
+    <Compile Include="EnumBrændstof.cs" />
+    <Compile Include="EnumEnergiKlasse.cs" />
+    <Compile Include="EnumKørekortType.cs" />
+    <Compile Include="ErhverPersonbil.cs" />
     <Compile Include="IKøretøjDimensioner.cs" />
+    <Compile Include="InvalidRegistreringsnummerException.cs" />
     <Compile Include="Køretøj.cs" />
     <Compile Include="Lastbil.cs" />
     <Compile Include="Personbil.cs" />
+    <Compile Include="PrivatPersonbil.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

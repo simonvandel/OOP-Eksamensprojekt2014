@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace eksamen2014
 {
-    public class Personbil : Køretøj
+    public abstract class Personbil : Køretøj
     {
+
+        public Personbil(string navn, int årgang, string registreringsnummer) : base(navn, årgang, registreringsnummer) { }
         /*
         public struct Dimensioner
         {
@@ -22,9 +24,10 @@ namespace eksamen2014
                 Bredde = bredde;
             }
         }
-         */ //TODO 
+         */ //TODO dimensioner
 
-        //public override EnumKørekortType KørekortType { get; private set; }
+        protected int _sæder;
+
         protected override double _minMotorstørrelse
         {
             get { return 0.7; }
@@ -33,8 +36,9 @@ namespace eksamen2014
         {
             get { return 10; }
         }
-        public int Sæder { get; set; } // TODO input validering
+        public abstract int Sæder { get; set; }
         //public Dimensioner Bagagerum { get; private set; } // TODO : skal sættes i constructor
-        // TODO privat vs erhverv
     }
+
+
 }

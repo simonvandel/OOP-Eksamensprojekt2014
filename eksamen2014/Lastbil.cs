@@ -8,6 +8,13 @@ namespace eksamen2014
 {
     public class Lastbil : Køretøj, IKøretøjDimensioner
     {
+        
+
+        public double Lastevne { get;private  set; }
+        public double Højde { get; set; }
+        public double Vægt { get;set; }
+        public double Længde { get;  set; }
+
         protected override double _minMotorstørrelse
         {
             get { return 4.2; }
@@ -16,12 +23,26 @@ namespace eksamen2014
         {
             get { return 15; }
         }
-        
 
-        public double Lastevne { get;private  set; }
-        public double Højde { get; set; }
-        public double Vægt { get;set; }
-        public double Længde { get;  set; }
-        // TODO : kørekorttype
+        public override EnumBrændstof Brændstof
+        {
+            get
+            {
+                return EnumBrændstof.Diesel;
+            }
+            set
+            {
+                if (value == EnumBrændstof.Benzin) throw new ArgumentException("Lastbiler kan ikke benytte benzin");
+            }
+        }
+
+        public override EnumKørekortType KørekortType
+        {
+            get
+            {
+                if (HarTrækkrog) return EnumKørekortType.CE;
+                else return EnumKørekortType.C;
+            }
+        }
     }
 }

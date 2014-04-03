@@ -8,16 +8,22 @@ namespace eksamen2014
 {
     public abstract class Køretøj
     {
-        public enum EnumKørekortType { A, B, C, D, BE, CE, DE}
-        public enum EnumBrændstof { Diesel, Benzin}
-        public enum EnumEnergiklasse { A, B, C, D}
+        public Køretøj() { }
 
+        public Køretøj(string navn, int årgang, string registreringsnummer)
+        {
+            Navn = navn;
+            Årgang = årgang;
+            Registreringsnummer = registreringsnummer;
+        }
+        
         private string _navn;
         private double _km;
         private string _registreringsnummer;
         private double _nyPris;
         protected double _motorstørrelse;
-        protected abstract double _minMotorstørrelse { get;}
+        protected bool _harTrækkrog;
+        protected abstract double _minMotorstørrelse { get; }
         protected abstract double _maxMotorstørrelse { get; }
 
         public String Navn
@@ -52,10 +58,22 @@ namespace eksamen2014
                 string synligeTegn = _registreringsnummer.Substring(2, antalSynligeTegn);
                 return string.Format("**{0}**", synligeTegn);
                 }
-            set { 
-                // TODO
+            set {
+                char[] førsteToTegn = value.ToCharArray(0, 2);
+                char[] sidsteTegn = value.ToCharArray(2,value.Count() - 2);
+                
+                if (førsteToTegn.Count(c => char.IsLetter(c)) == 2
+                    && sidsteTegn.Count() == 5
+                    && sidsteTegn.Count(c => char.IsDigit(c)) == 5)
+                {
+                    _registreringsnummer = value;
                 }
-        } // TODO registreringsnummer
+                else
+                {
+                    throw new InvalidRegistreringsnummerException("Ikke gyldigt registreringsnummer");
+                }
+                }
+        } 
         public int Årgang { get; private set; }
         public double NyPris { 
             get {
@@ -66,8 +84,11 @@ namespace eksamen2014
                 else _nyPris = value;
                 }
         }
-        public bool Trækkrog { get; set; } // TODO virtual
-        //public abstract EnumKørekortType KørekortType { get; set; } TODO : kørekorttype
+        public virtual bool HarTrækkrog {
+            get { return _harTrækkrog; }
+            set { _harTrækkrog = value; }
+        }
+        public abstract EnumKørekortType KørekortType { get; }
         public double Motorstørrelse
         {
             get
@@ -87,12 +108,12 @@ namespace eksamen2014
             }
         }
         public double KmPerLiter { get; set; }
-        public EnumBrændstof Brændstof { get; set; } // TODO virtual
+        public virtual EnumBrændstof Brændstof { get; set; }
         //public virtual EnumEnergiklasse Energiklasse { get { } } // TODO logic
 
         public override string ToString() 
         {
-            throw new NotImplementedException();
-        } // TODO tostring
+            return string.Format("{0} - {1} årgang {2} - kørt {3} km", Registreringsnummer, Navn, Årgang, Km);
+        } // TODO add flere punkter?
     }
 }
