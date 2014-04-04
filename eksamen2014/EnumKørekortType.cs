@@ -1,0 +1,1 @@
+﻿public enum EnumKørekortType { A, B, C, D, BE, CE, DE }

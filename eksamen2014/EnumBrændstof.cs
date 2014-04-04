@@ -1,0 +1,1 @@
+﻿public enum EnumBrændstof { Diesel, Benzin }
