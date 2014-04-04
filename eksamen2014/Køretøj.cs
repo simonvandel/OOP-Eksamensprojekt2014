@@ -109,7 +109,30 @@ namespace eksamen2014
         }
         public double KmPerLiter { get; set; }
         public virtual EnumBrændstof Brændstof { get; set; }
-        //public virtual EnumEnergiklasse Energiklasse { get { } } // TODO logic
+
+        public virtual EnumEnergiklasse Energiklasse 
+        { 
+            get {
+                if (Årgang < 2010)
+                {
+                    if (Brændstof == EnumBrændstof.Diesel) return BeregnEnergiKlasse(23,18,13);
+                    else return BeregnEnergiKlasse(18,14,10);
+                }
+                else
+                {
+                    if (Brændstof == EnumBrændstof.Diesel) return BeregnEnergiKlasse(25, 20, 15);
+                    else return BeregnEnergiKlasse(20,16,12);
+                }
+            } 
+        }
+
+        private EnumEnergiklasse BeregnEnergiKlasse(int aklasse, int bklasse, int cklasse)
+        {
+            if (KmPerLiter >= aklasse) { return EnumEnergiklasse.A; }
+            else if (KmPerLiter >= bklasse) { return EnumEnergiklasse.B; }
+            else if (KmPerLiter >= cklasse) { return EnumEnergiklasse.C; }
+            else { return EnumEnergiklasse.D; }
+        }
 
         public override string ToString() 
         {

@@ -43,7 +43,7 @@
   <ItemGroup>
     <Compile Include="Autocamper.cs" />
     <Compile Include="Bus.cs" />
-    <Compile Include="Dimensioner.cs" />
+    <Compile Include="Dimensioner3.cs" />
     <Compile Include="Dimensioner2.cs" />
     <Compile Include="EnumBrændstof.cs" />
     <Compile Include="EnumEnergiKlasse.cs" />

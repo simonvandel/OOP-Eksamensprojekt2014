@@ -1,4 +1,4 @@
-OOP-Eksamensprojekt2014
+﻿OOP-Eksamensprojekt2014
 =======================
 
 AAU - OOP Eksamensprojekt 2014
@@ -39,3 +39,7 @@ Interface: IKøretøjDimensioner
 Antagelser:
 
 Registreringsnummer: Vi antager at de to bogstaver i registreringsnummer er de første 2 tegn.
+
+
+Årstal: 
+efter 2010 forståes som: efter 1. Januar 2010 kl 00.00.
