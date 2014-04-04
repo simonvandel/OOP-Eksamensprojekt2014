@@ -6,14 +6,11 @@ using System.Threading.Tasks;
 
 namespace eksamen2014
 {
-    public class Lastbil : Køretøj, IKøretøjDimensioner
+    public class Lastbil : Køretøj
     {
-        
-
         public double Lastevne { get;private  set; }
-        public double Højde { get; set; }
-        public double Vægt { get;set; }
-        public double Længde { get;  set; }
+        public double Vægt { get; set; }
+        public Dimensioner2 Dimensioner { get; set; }
 
         protected override double _minMotorstørrelse
         {

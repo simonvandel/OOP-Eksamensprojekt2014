@@ -37,7 +37,7 @@ namespace eksamen2014
             get { return 10; }
         }
         public abstract int Sæder { get; set; }
-        //public Dimensioner Bagagerum { get; private set; } // TODO : skal sættes i constructor
+        public Dimensioner3 Bagagerum { get; private set; } // TODO : skal sættes i constructor
     }
 
 

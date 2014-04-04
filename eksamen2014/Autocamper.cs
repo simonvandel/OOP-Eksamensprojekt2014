@@ -17,11 +17,13 @@ namespace eksamen2014
         {
             get { return 6.2; }
         }
-        
-        // TODO alt. Husk override varmesystem
+
+        public TransportMuligheder Muligheder { get; set; }
         public override EnumKørekortType KørekortType
         {
             get { return EnumKørekortType.B; }
         }
+
+        public EnumVarmesystem Varmesystem { get; set; }
     }
 }

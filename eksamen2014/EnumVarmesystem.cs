@@ -1,0 +1,1 @@
+﻿public enum EnumVarmesystem { Gas, Strøm, Oliefyr}
