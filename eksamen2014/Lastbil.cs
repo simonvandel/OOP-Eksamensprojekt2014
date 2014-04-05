@@ -8,6 +8,7 @@ namespace eksamen2014
 {
     public class Lastbil : Køretøj
     {
+        public Lastbil(string navn, int årgang, string registreringsnummer) : base(navn,årgang,registreringsnummer) { } //TODO lav specifik constructor
         public double Lastevne { get;private  set; }
         public double Vægt { get; set; }
         public Dimensioner2 Dimensioner { get; set; }

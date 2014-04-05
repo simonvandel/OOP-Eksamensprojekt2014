@@ -110,7 +110,7 @@ namespace eksamen2014
         public double KmPerLiter { get; set; }
         public virtual EnumBrændstof Brændstof { get; set; }
 
-        public virtual EnumEnergiklasse Energiklasse 
+        public EnumEnergiklasse Energiklasse 
         { 
             get {
                 if (Årgang < 2010)
@@ -126,7 +126,7 @@ namespace eksamen2014
             } 
         }
 
-        private EnumEnergiklasse BeregnEnergiKlasse(int aklasse, int bklasse, int cklasse)
+        protected virtual EnumEnergiklasse BeregnEnergiKlasse(int aklasse, int bklasse, int cklasse)
         {
             if (KmPerLiter >= aklasse) { return EnumEnergiklasse.A; }
             else if (KmPerLiter >= bklasse) { return EnumEnergiklasse.B; }
@@ -136,7 +136,8 @@ namespace eksamen2014
 
         public override string ToString() 
         {
-            return string.Format("{0} - {1} årgang {2} - kørt {3} km", Registreringsnummer, Navn, Årgang, Km);
+            return string.Format("{0} - {1} årgang {2} - kørt {3} km" + Environment.NewLine + "Kørekorttype {4} - Energiklasse {5}", 
+                Registreringsnummer, Navn, Årgang, Km, KørekortType, Energiklasse);
         } // TODO add flere punkter?
     }
 }
