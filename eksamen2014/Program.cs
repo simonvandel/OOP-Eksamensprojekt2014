@@ -12,7 +12,7 @@ namespace eksamen2014
         {
             List<Køretøj> garage = new List<Køretøj>();
 
-            garage.Add(new PrivatPersonbil("Audi A6", 2011, "AB12345"));
+            garage.Add(new PrivatPersonbil("Audi A6", 2011, "AB12345", 5));
             garage.Add(new ErhvervPersonbil("Ford Transporter", 2000, "XY54321"));
             garage.Add(new Autocamper("SuperCamper9000", 1998, "AZ13579", EnumVarmesystem.Gas));
             garage.Add(new Lastbil("Scandia 5", 2005, "WQ18652"));

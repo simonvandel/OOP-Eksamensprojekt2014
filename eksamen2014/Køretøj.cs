@@ -8,14 +8,21 @@ namespace eksamen2014
 {
     public abstract class Køretøj
     {
-        public Køretøj() { }
-
-        public Køretøj(string navn, int årgang, string registreringsnummer)
+        public Køretøj(string navn, int årgang, string registreringsnummer, double km, 
+            double nypris, bool trækkrog, double kmpl, EnumBrændstof brændstof)
         {
             Navn = navn;
             Årgang = årgang;
             Registreringsnummer = registreringsnummer;
+            Km = km;
+            NyPris = nypris;
+            HarTrækkrog = trækkrog;
+            KmPerLiter = kmpl;
+            Brændstof = brændstof;
         }
+
+        public Køretøj(string navn, int årgang, string regristringsnummer)
+            : this(navn, årgang, regristringsnummer, 0, 0, true, 0, EnumBrændstof.Diesel) { } //TODO trækkrog default burde være false, men det fucker med ErhvervsPersonbil
         
         private string _navn;
         private double _km;
@@ -136,8 +143,9 @@ namespace eksamen2014
 
         public override string ToString() 
         {
-            return string.Format("{0} - {1} årgang {2} - kørt {3} km" + Environment.NewLine + "Kørekorttype {4} - Energiklasse {5}", 
-                Registreringsnummer, Navn, Årgang, Km, KørekortType, Energiklasse);
+            return string.Format("{0} - {1} årgang {2} - {3} {4}" + Environment.NewLine +
+                "Kørekorttype {5} - Energiklasse {6} - kørt {7} km",
+                Registreringsnummer, Navn, Årgang, Brændstof, HarTrækkrog ? "med trækkrog " : "", Km, KørekortType, Energiklasse);
         } // TODO add flere punkter?
     }
 }

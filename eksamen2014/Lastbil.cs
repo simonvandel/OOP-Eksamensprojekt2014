@@ -8,8 +8,13 @@ namespace eksamen2014
 {
     public class Lastbil : Køretøj
     {
-        public Lastbil(string navn, int årgang, string registreringsnummer) : base(navn,årgang,registreringsnummer) { } //TODO lav specifik constructor
-        public double Lastevne { get;private  set; }
+        public Lastbil(string navn, int årgang, string registreringsnummer, double lasteevne) 
+            : base(navn,årgang,registreringsnummer) { } //TODO lav specifik constructor
+        
+        public Lastbil(string navn, int årgang, string registreringsnummer)
+            : this(navn, årgang, registreringsnummer, 0) { }
+        
+        public double Lastevne { get; private set; } //QA hvorfor private set?
         public double Vægt { get; set; }
         public Dimensioner2 Dimensioner { get; set; }
 

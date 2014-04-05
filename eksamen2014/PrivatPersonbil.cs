@@ -8,8 +8,16 @@ namespace eksamen2014
 {
     public class PrivatPersonbil : Personbil
     {
-        public PrivatPersonbil(string navn, int årgang, string registreringsnummer) 
-            : base(navn,årgang,registreringsnummer) { }
+        public PrivatPersonbil(string navn, int årgang, string registreringsnummer, int sæder, bool beslag) 
+            : base(navn,årgang,registreringsnummer) 
+        {
+            Sæder = sæder;
+            HarIsofixBeslag = beslag;
+        }
+
+        public PrivatPersonbil(string navn, int årgang, string registreringsnummer, int sæder)
+            : this(navn,årgang,registreringsnummer,sæder,false) { } //Default beslag = false
+
 
         public bool HarIsofixBeslag { get; set; }
 

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace eksamen2014
 {
+    //TODO filnavn?
     public class ErhvervPersonbil : Personbil
     {
         public ErhvervPersonbil(string navn, int årgang, string registreringsnummer) : base(navn,årgang,registreringsnummer) { }
         
-
         public bool HarSikkerhedsbøjle { get; set; }
         public double Lasteevne { get; set; }
 
