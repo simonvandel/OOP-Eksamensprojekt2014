@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace eksamen2014
 {
-    public class Bus : Køretøj
+    public class Bus : Køretøj, IKøretøjDimensioner, ITransportMuligheder
     {
-        public Bus(string navn, int årgang, string registreringsnummer) : base(navn,årgang,registreringsnummer) { } //TODO lav specifik constructor
+        public Bus(string navn, int årgang, string registreringsnummer) 
+            : base(navn,årgang,registreringsnummer) { }
 
         protected override double _minMotorstørrelse
         {
@@ -18,10 +19,13 @@ namespace eksamen2014
         {
             get { return 15; }
         }
+        public double Vægt { get; set; }
+        public double Højde { get; set; }
+        public double Længde { get; set; }
 
-        public TransportMuligheder Muligheder { get; set; }
-        public double Vægt { get;  set; }
-        public Dimensioner2 Dimensioner { get; set; }
+        public int Siddepladser { get; set; }
+        public int Sovepladser { get; set; }
+        public bool HarToilet { get; set; }
 
         public override EnumKørekortType KørekortType
         {

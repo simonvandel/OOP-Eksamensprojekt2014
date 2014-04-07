@@ -6,7 +6,8 @@ AAU - OOP Eksamensprojekt 2014
 Antagelser:
   - Oprettelser:
     - Handlende skal have et ID. Saldo må gerne komme senere.
-
+    - Søgefunktioner, udover de angivede, kan konstrueres ved hjælp af den generiske Søg metode.
+    - Ved søgefunktion 2 forståes det, at toiletfaciliteter altid ønskes.
 
 Overvejelser:
 

@@ -6,19 +6,17 @@ using System.Threading.Tasks;
 
 namespace eksamen2014
 {
-    public class Lastbil : Køretøj
+    public class Lastbil : Køretøj, IKøretøjDimensioner
     {
-        public Lastbil(string navn, int årgang, string registreringsnummer, double lasteevne) 
-            : base(navn,årgang,registreringsnummer) {
-                Lastevne = lasteevne;
-        } //TODO lav specifik constructor
-        
         public Lastbil(string navn, int årgang, string registreringsnummer)
-            : this(navn, årgang, registreringsnummer, 0) { }
-        
-        public double Lastevne { get; private set; } //QA hvorfor private set?
+            : base(navn, årgang, registreringsnummer)
+        {
+        }
+
+        public double Lastevne { get; set; }
         public double Vægt { get; set; }
-        public Dimensioner2 Dimensioner { get; set; }
+        public double Højde { get; set; }
+        public double Længde { get; set; }
 
         protected override double _minMotorstørrelse
         {
@@ -49,5 +47,7 @@ namespace eksamen2014
                 else return EnumKørekortType.C;
             }
         }
+
+
     }
 }

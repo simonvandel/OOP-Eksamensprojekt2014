@@ -44,8 +44,7 @@
     <Compile Include="Auktionshus.cs" />
     <Compile Include="Autocamper.cs" />
     <Compile Include="Bus.cs" />
-    <Compile Include="Dimensioner3.cs" />
-    <Compile Include="Dimensioner2.cs" />
+    <Compile Include="DimensionerBagagerum.cs" />
     <Compile Include="EnumBrændstof.cs" />
     <Compile Include="EnumEnergiKlasse.cs" />
     <Compile Include="EnumKørekortType.cs" />
@@ -56,6 +55,7 @@
     <Compile Include="IHandlende.cs" />
     <Compile Include="IKøretøjDimensioner.cs" />
     <Compile Include="InvalidRegistreringsnummerException.cs" />
+    <Compile Include="KøbsdetaljerEventArgs.cs" />
     <Compile Include="Privat.cs" />
     <Compile Include="Køber.cs" />
     <Compile Include="Sælger.cs" />

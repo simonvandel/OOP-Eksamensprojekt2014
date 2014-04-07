@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace eksamen2014
 {
-    public class Autocamper : Køretøj
+    public class Autocamper : Køretøj, ITransportMuligheder
     {
         public Autocamper(string navn, int årgang, string registreringsnummer, EnumVarmesystem varmesystem) 
             : base(navn,årgang,registreringsnummer) 
@@ -24,7 +24,6 @@ namespace eksamen2014
             get { return 6.2; }
         }
 
-        public TransportMuligheder Muligheder { get; set; }
         public override EnumKørekortType KørekortType
         {
             get { return EnumKørekortType.B; }
@@ -41,5 +40,10 @@ namespace eksamen2014
 
             return base.BeregnEnergiKlasse(aklasse, bklasse, cklasse, kmperliter);
         }
+
+        public int Siddepladser { get; set; }
+        public int Sovepladser { get; set; }
+        public bool HarToilet { get; set; }
+
     }
 }

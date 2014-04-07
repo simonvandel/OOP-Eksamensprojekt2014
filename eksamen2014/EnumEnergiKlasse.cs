@@ -1,1 +1,1 @@
-﻿public enum EnumEnergiklasse { A, B, C, D }
+﻿public enum EnumEnergiklasse { A = 1, B, C, D }

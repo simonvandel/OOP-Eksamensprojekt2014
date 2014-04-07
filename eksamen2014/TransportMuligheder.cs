@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace eksamen2014
 {
-    public struct TransportMuligheder
+    interface ITransportMuligheder
     {
-        public int Siddepladser { get; set; }
-        public int Sovepladser { get; set; }
-        public bool HarToilet { get; set; }
+        int Siddepladser { get; set; }
+        int Sovepladser { get; set; }
+        bool HarToilet { get; set; }
     }
 }

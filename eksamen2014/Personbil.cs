@@ -9,23 +9,14 @@ namespace eksamen2014
     public abstract class Personbil : Køretøj
     {
 
-        public Personbil(string navn, int årgang, string registreringsnummer) : base(navn, årgang, registreringsnummer) { }
-        /*
-        public struct Dimensioner
+        public Personbil(string navn, int årgang, string registreringsnummer, DimensionerBagagerum bagagerum)
+            : this(navn, årgang, registreringsnummer)
         {
-            public double Højde { get; private set; }
-            public double Længde { get; private set; }
-            public double Bredde { get; private set; }
-
-            public Dimensioner(double højde, double længde, double bredde)
-            {
-                Højde = højde;
-                Længde = længde;
-                Bredde = bredde;
-            }
+            Bagagerum = bagagerum;
         }
-         */ 
-        //TODO dimensioner
+
+        public Personbil(string navn, int årgang, string registreringsnummer)
+            : base(navn, årgang, registreringsnummer) { }
 
         protected int _sæder;
 
@@ -38,7 +29,7 @@ namespace eksamen2014
             get { return 10; }
         }
         public abstract int Sæder { get; set; }
-        public Dimensioner3 Bagagerum { get; private set; } // TODO : skal sættes i constructor
+        public DimensionerBagagerum Bagagerum { get; private set; }
     }
 
 

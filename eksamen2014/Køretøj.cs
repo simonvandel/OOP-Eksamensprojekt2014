@@ -8,23 +8,16 @@ namespace eksamen2014
 {
     public abstract class Køretøj
     {
-        public Køretøj(string navn, int årgang, string registreringsnummer, double km, 
-            double nypris, bool trækkrog, double kmpl, EnumBrændstof brændstof)
+
+        public Køretøj(string navn, int årgang, string registreringsnummer)
         {
             Navn = navn;
             Årgang = årgang;
             Registreringsnummer = registreringsnummer;
-            Km = km;
-            NyPris = nypris;
-            HarTrækkrog = trækkrog;
-            KmPerLiter = kmpl;
-            Brændstof = brændstof;
         }
-        // TODO køretøjs constructor skal være meget simpel - skal kun indeholde fællestræk
-
-        public Køretøj(string navn, int årgang, string regristringsnummer)
-            : this(navn, årgang, regristringsnummer, 0, 0, true, 0, EnumBrændstof.Diesel) { } //TODO trækkrog default burde være false, men det fucker med ErhvervsPersonbil
         
+
+
         private string _navn;
         private double _km;
         private string _registreringsnummer;
@@ -147,6 +140,6 @@ namespace eksamen2014
             return string.Format("{0} - {1} årgang {2} - {3} {4}" + Environment.NewLine +
                 "Kørekorttype {5} - Energiklasse {6} - kørt {7} km",
                 Registreringsnummer, Navn, Årgang, Brændstof, HarTrækkrog ? "med trækkrog " : "", KørekortType, Energiklasse, Km);
-        } // TODO add flere punkter?
+        }
     }
 }

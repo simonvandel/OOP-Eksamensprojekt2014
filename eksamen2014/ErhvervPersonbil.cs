@@ -8,7 +8,8 @@ namespace eksamen2014
 {
     public class ErhvervPersonbil : Personbil
     {
-        public ErhvervPersonbil(string navn, int årgang, string registreringsnummer) : base(navn,årgang,registreringsnummer) { }
+        public ErhvervPersonbil(string navn, int årgang, string registreringsnummer) 
+            : base(navn,årgang,registreringsnummer) { }
         
         public bool HarSikkerhedsbøjle { get; set; }
         public double Lasteevne { get; set; }
