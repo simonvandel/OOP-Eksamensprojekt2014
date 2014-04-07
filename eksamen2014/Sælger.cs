@@ -9,6 +9,6 @@ namespace eksamen2014
     public class Sælger : Køber
     {
         int Postnummer { get; set; }
-        void ModtagNotifikationOmBud() { } //TODO eventkald
+        public void ModtagNotifikationOmBud() { } //TODO eventkald
     }
 }
