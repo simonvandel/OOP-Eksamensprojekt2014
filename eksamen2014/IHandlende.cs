@@ -10,8 +10,8 @@ namespace eksamen2014
     {
         int ID { get; set; }
 
-        double Saldo { get; set; }
+        decimal Saldo { get; set; }
 
-        double Kredit { get; set; }
+        decimal Kredit { get; set; }
     }
 }

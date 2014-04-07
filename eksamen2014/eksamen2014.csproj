@@ -52,6 +52,7 @@
     <Compile Include="EnumVarmesystem.cs" />
     <Compile Include="ErhvervPersonbil.cs" />
     <Compile Include="Firma.cs" />
+    <Compile Include="Handlende.cs" />
     <Compile Include="IHandlende.cs" />
     <Compile Include="IKøretøjDimensioner.cs" />
     <Compile Include="InvalidRegistreringsnummerException.cs" />
