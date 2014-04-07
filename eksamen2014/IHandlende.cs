@@ -9,7 +9,9 @@ namespace eksamen2014
     public interface IHandlende
     {
         int ID { get; set; }
-        double Saldo { get; set; } // TODO virke med kredit
+
+        double Saldo { get; set; }
+
         double Kredit { get; set; }
     }
 }

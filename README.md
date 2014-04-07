@@ -3,6 +3,10 @@
 
 AAU - OOP Eksamensprojekt 2014
 
+Antagelser:
+  - Oprettelser:
+    - Handlende skal have et ID. Saldo må gerne komme senere.
+
 
 Overvejelser:
 

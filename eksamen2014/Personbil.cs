@@ -24,7 +24,8 @@ namespace eksamen2014
                 Bredde = bredde;
             }
         }
-         */ //TODO dimensioner
+         */ 
+        //TODO dimensioner
 
         protected int _sæder;
 
