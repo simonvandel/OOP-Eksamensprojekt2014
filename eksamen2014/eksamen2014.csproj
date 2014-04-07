@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Auktionshus.cs" />
     <Compile Include="Autocamper.cs" />
     <Compile Include="Bus.cs" />
     <Compile Include="Dimensioner3.cs" />
@@ -49,9 +50,14 @@
     <Compile Include="EnumEnergiKlasse.cs" />
     <Compile Include="EnumKørekortType.cs" />
     <Compile Include="EnumVarmesystem.cs" />
-    <Compile Include="ErhverPersonbil.cs" />
+    <Compile Include="ErhvervPersonbil.cs" />
+    <Compile Include="Firma.cs" />
+    <Compile Include="IHandlende.cs" />
     <Compile Include="IKøretøjDimensioner.cs" />
     <Compile Include="InvalidRegistreringsnummerException.cs" />
+    <Compile Include="Privat.cs" />
+    <Compile Include="Køber.cs" />
+    <Compile Include="Sælger.cs" />
     <Compile Include="TransportMuligheder.cs" />
     <Compile Include="Køretøj.cs" />
     <Compile Include="Lastbil.cs" />

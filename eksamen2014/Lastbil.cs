@@ -9,7 +9,9 @@ namespace eksamen2014
     public class Lastbil : Køretøj
     {
         public Lastbil(string navn, int årgang, string registreringsnummer, double lasteevne) 
-            : base(navn,årgang,registreringsnummer) { } //TODO lav specifik constructor
+            : base(navn,årgang,registreringsnummer) {
+                Lastevne = lasteevne;
+        } //TODO lav specifik constructor
         
         public Lastbil(string navn, int årgang, string registreringsnummer)
             : this(navn, årgang, registreringsnummer, 0) { }

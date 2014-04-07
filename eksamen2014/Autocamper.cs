@@ -32,18 +32,14 @@ namespace eksamen2014
 
         public EnumVarmesystem Varmesystem { get; set; }
 
-        private double _kmPerLiter;
 
-        protected override EnumEnergiklasse BeregnEnergiKlasse(int aklasse, int bklasse, int cklasse)
+        protected override EnumEnergiklasse BeregnEnergiKlasse(int aklasse, int bklasse, int cklasse, double kmperliter)
         {
-            if (Varmesystem == EnumVarmesystem.Oliefyr) { _kmPerLiter = KmPerLiter * 0.7; }
-            else if (Varmesystem == EnumVarmesystem.Strøm) { _kmPerLiter = KmPerLiter * 0.8; }
-            else { _kmPerLiter = KmPerLiter * 0.9; }
-            
-            if (_kmPerLiter >= aklasse) { return EnumEnergiklasse.A; }
-            else if (_kmPerLiter >= bklasse) { return EnumEnergiklasse.B; }
-            else if (_kmPerLiter >= cklasse) { return EnumEnergiklasse.C; }
-            else { return EnumEnergiklasse.D; }
+            if (Varmesystem == EnumVarmesystem.Oliefyr) { kmperliter *= 0.7; }
+            else if (Varmesystem == EnumVarmesystem.Strøm) { kmperliter *= 0.8; }
+            else { kmperliter *= 0.9; }
+
+            return base.BeregnEnergiKlasse(aklasse, bklasse, cklasse, kmperliter);
         }
     }
 }

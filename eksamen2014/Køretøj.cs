@@ -20,6 +20,7 @@ namespace eksamen2014
             KmPerLiter = kmpl;
             Brændstof = brændstof;
         }
+        // TODO køretøjs constructor skal være meget simpel - skal kun indeholde fællestræk
 
         public Køretøj(string navn, int årgang, string regristringsnummer)
             : this(navn, årgang, regristringsnummer, 0, 0, true, 0, EnumBrændstof.Diesel) { } //TODO trækkrog default burde være false, men det fucker med ErhvervsPersonbil
@@ -122,22 +123,22 @@ namespace eksamen2014
             get {
                 if (Årgang < 2010)
                 {
-                    if (Brændstof == EnumBrændstof.Diesel) return BeregnEnergiKlasse(23,18,13);
-                    else return BeregnEnergiKlasse(18,14,10);
+                    if (Brændstof == EnumBrændstof.Diesel) return BeregnEnergiKlasse(23,18,13, KmPerLiter);
+                    else return BeregnEnergiKlasse(18,14,10, KmPerLiter);
                 }
                 else
                 {
-                    if (Brændstof == EnumBrændstof.Diesel) return BeregnEnergiKlasse(25, 20, 15);
-                    else return BeregnEnergiKlasse(20,16,12);
+                    if (Brændstof == EnumBrændstof.Diesel) return BeregnEnergiKlasse(25, 20, 15, KmPerLiter);
+                    else return BeregnEnergiKlasse(20,16,12, KmPerLiter);
                 }
             } 
         }
 
-        protected virtual EnumEnergiklasse BeregnEnergiKlasse(int aklasse, int bklasse, int cklasse)
+        protected virtual EnumEnergiklasse BeregnEnergiKlasse(int aklasse, int bklasse, int cklasse, double kmperliter)
         {
-            if (KmPerLiter >= aklasse) { return EnumEnergiklasse.A; }
-            else if (KmPerLiter >= bklasse) { return EnumEnergiklasse.B; }
-            else if (KmPerLiter >= cklasse) { return EnumEnergiklasse.C; }
+            if (kmperliter >= aklasse) { return EnumEnergiklasse.A; }
+            else if (kmperliter >= bklasse) { return EnumEnergiklasse.B; }
+            else if (kmperliter >= cklasse) { return EnumEnergiklasse.C; }
             else { return EnumEnergiklasse.D; }
         }
 
@@ -145,7 +146,7 @@ namespace eksamen2014
         {
             return string.Format("{0} - {1} årgang {2} - {3} {4}" + Environment.NewLine +
                 "Kørekorttype {5} - Energiklasse {6} - kørt {7} km",
-                Registreringsnummer, Navn, Årgang, Brændstof, HarTrækkrog ? "med trækkrog " : "", Km, KørekortType, Energiklasse);
+                Registreringsnummer, Navn, Årgang, Brændstof, HarTrækkrog ? "med trækkrog " : "", KørekortType, Energiklasse, Km);
         } // TODO add flere punkter?
     }
 }
