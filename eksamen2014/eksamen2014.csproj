@@ -59,7 +59,7 @@
     <Compile Include="Privat.cs" />
     <Compile Include="Køber.cs" />
     <Compile Include="Sælger.cs" />
-    <Compile Include="TransportMuligheder.cs" />
+    <Compile Include="ITransportMuligheder.cs" />
     <Compile Include="Køretøj.cs" />
     <Compile Include="Lastbil.cs" />
     <Compile Include="Personbil.cs" />
