@@ -11,38 +11,53 @@ namespace eksamen2014
         static void Main(string[] args)
         {
 
-            Autocamper autokamper = new Autocamper("SuperCamper9000", 1998, "AZ13579", EnumVarmesystem.Oliefyr);
-            autokamper.Siddepladser = 20;
-            autokamper.HarToilet = true;
+            Autocamper autokamper1 = new Autocamper("SuperCamper9000", 2013, "AZ13579", EnumVarmesystem.Gas);
+            autokamper1.Siddepladser = 20;
+            autokamper1.HarToilet = true;
 
-            PrivatPersonbil audi = new PrivatPersonbil("Audi A6", 2011, "AB12345", 5);
-            audi.Km = 250000;
-            audi.KmPerLiter = 18;
+            Autocamper autokamper2 = new Autocamper("SølvCamper5000", 1995, "AW33212", EnumVarmesystem.Oliefyr);
+            autokamper2.Siddepladser = 5;
+            autokamper1.HarToilet = false;
 
-            ErhvervPersonbil fordTransporter = new ErhvervPersonbil("Ford Transporter", 2000, "XY54321");
-            fordTransporter.Km = 500000;
+            PrivatPersonbil audi = new PrivatPersonbil("Audi A6", 2011, "AB12345", 7);
+            audi.Km = 2500;
+            audi.KmPerLiter = 25;
+            audi.HarIsofixBeslag = true;
+            audi.HarTrækkrog = true;
 
+            PrivatPersonbil skoda = new PrivatPersonbil("Skoda Octavia", 1999, "WE12512", 4, new DimensionerBagagerum() {Bredde = 200, Højde = 50, Længde = 100 } );
+            skoda.Brændstof = EnumBrændstof.Benzin;
+            skoda.KmPerLiter = 12;
+
+            ErhvervPersonbil Transporter = new ErhvervPersonbil("Ford Transporter", 1990, "XY54321");
+            Transporter.Km = 500000;
+
+            ErhvervPersonbil Berlingo = new ErhvervPersonbil("Citroën Berlingo", 2010, "XY54321");
+            
             Lastbil scandia = new Lastbil("Scandia 5", 2005, "WQ18652");
 
-            Bus Bus12 = new Bus("Bus 12", 1950, "AA11111");
+            Bus BogBus = new Bus("Bog Bussen", 1950, "AA11111");
+            BogBus.Vægt = 1000;
 
             List<Køretøj> garage = new List<Køretøj>();
 
+            garage.Add(autokamper2);
+            garage.Add(skoda);
             garage.Add(audi);
-            garage.Add(fordTransporter);
-            garage.Add(autokamper);
+            garage.Add(Transporter);
+            garage.Add(autokamper1);
             garage.Add(scandia);
-            garage.Add(Bus12);
+            garage.Add(BogBus);
 
             Auktionshus au = new Auktionshus();
 
             Sælger Simon = new Sælger();
-            Simon.Handlende = new Privat(183101, 123123123123);
+            Simon.Handlende = new Privat(183101, 5000000);
             Simon.Postnummer = 5000;
 
             Sælger Sørensen = new Sælger();
             Sørensen.Postnummer = 8000;
-            Sørensen.Handlende = new Firma(1231, 122131231251);
+            Sørensen.Handlende = new Firma(1231, 100000000);
             
 
 
@@ -59,23 +74,28 @@ namespace eksamen2014
             au.SætTilSalg(garage[1], Simon, 10000);
             au.SætTilSalg(garage[2], Sørensen, 10000);
             au.SætTilSalg(garage[3], Sørensen, 10000);
-            au.SætTilSalg(garage[4], Simon, 10000);
+            au.SætTilSalg(garage[4], Simon, 500);
 
-
-
+            
             // demo søg 1
-            //SøgningsTest(au,au.SøgNavn("audi"));
+            Console.WriteLine("søger efter navn \"audi\"");
+            SøgningsTest(au,au.SøgNavn("audi"));
 
-            // demo søg 2
-            //SøgningsTest(au, au.SøgTransportMuligheder(10));
+            // demo søg 2 
+            Console.WriteLine("søger efter 10+ sæder og toilet"); 
+            SøgningsTest(au, au.SøgTransportMuligheder(10));
 
             // demo søg 3
-            //SøgningsTest(au, au.SøgStortKørekort(2000));
+            Console.WriteLine("Søger efter fartøjer der kræver stort kørekort, og vejer under 2000kg");
+            SøgningsTest(au, au.SøgStortKørekort(2000));
 
             // demo søg 4
-            //SøgningsTest(au, au.SøgKørtPris(1000000, 50000));
+            Console.WriteLine("Under 1mil, og 50.000 km - sorteret");
+            SøgningsTest(au, au.SøgKørtPris(1000, 5000000));
+            
             // demo søg 5
-            //SøgningsTest(au, au.SøgPostnummer(6000, 2000));
+            Console.WriteLine("finder biler til salg indenfor radius");
+            SøgningsTest(au, au.SøgPostnummer(4000, 2000));
 
             // Gennemsnitlig
             Console.WriteLine("Gennemsnitlig " + au.Gennemsnitlig());
@@ -101,11 +121,11 @@ namespace eksamen2014
 
         public static void SøgningsTest(Auktionshus au, IEnumerable<Køretøj> matches)
         {
-
             foreach (var item in matches)
             {
                 Console.WriteLine(item);
             }
+            Console.WriteLine();
             Console.WriteLine();
         }
     }

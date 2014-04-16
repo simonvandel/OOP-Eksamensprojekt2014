@@ -29,7 +29,7 @@ namespace eksamen2014
             get { return 10; }
         }
         public abstract int Sæder { get; set; }
-        public DimensionerBagagerum Bagagerum { get; private set; }
+        public DimensionerBagagerum Bagagerum { get; protected set; }
     }
 
 

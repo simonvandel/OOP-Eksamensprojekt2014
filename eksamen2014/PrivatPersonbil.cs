@@ -8,11 +8,16 @@ namespace eksamen2014
 {
     public class PrivatPersonbil : Personbil
     {
-        
-
         public PrivatPersonbil(string navn, int årgang, string registreringsnummer, int sæder)
-            : base(navn,årgang,registreringsnummer) {
+            : base(navn,årgang,registreringsnummer)
+        {
                 Sæder = sæder;
+        }
+
+        public PrivatPersonbil(string navn, int årgang, string registreringsnummer, int sæder, DimensionerBagagerum bagagerum)
+            : base(navn,årgang,registreringsnummer,bagagerum)
+        {
+            Sæder = sæder;
         }
 
 
