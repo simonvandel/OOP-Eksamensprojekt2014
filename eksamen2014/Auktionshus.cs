@@ -11,30 +11,27 @@ namespace eksamen2014
         public decimal Profit { get; private set; }
 
 
-        private Dictionary<int, SalgsObjekt> _tilSalg;
-        private Dictionary<int, SalgsObjekt> _solgte;
+        private List<SalgsObjekt> _tilSalg;
+        private List<SalgsObjekt> _solgte;
 
         public IEnumerable<Køretøj> GetSolgteEnumerable() 
         {
-            IEnumerable<Køretøj> Køretøjer = from keyValue in _solgte
-                                            select keyValue.Value.Køretøj;
-
-            return Køretøjer;
+            return LavKøretøjsListe(_solgte);
         }        
         
         public IEnumerable<Køretøj> Søg(Func<Køretøj, bool> pred)
         {
 
-            IEnumerable<Køretøj> tempList = LavKøretøjsListe();
+            IEnumerable<Køretøj> tempList = LavKøretøjsListe(_tilSalg);
 
             return tempList.Where(pred);
 
         }
 
-        private IEnumerable<Køretøj> LavKøretøjsListe()
+        private IEnumerable<Køretøj> LavKøretøjsListe(List<SalgsObjekt> liste)
         {
-            return from keyValue in _tilSalg
-                   select keyValue.Value.Køretøj;
+            return from k in liste
+                   select k.Køretøj;
         }
 
         public IEnumerable<Køretøj> SøgNavn(string navn)
@@ -46,7 +43,7 @@ namespace eksamen2014
 
         public IEnumerable<Køretøj> SøgTransportMuligheder(int MinSiddepladser)
         {
-            IEnumerable<Køretøj> køretøjer = LavKøretøjsListe();
+            IEnumerable<Køretøj> køretøjer = LavKøretøjsListe(_tilSalg);
 
             return køretøjer.OfType<ITransportMuligheder>().
                 Where(it => it.Siddepladser >= MinSiddepladser && it.HarToilet == true)
@@ -55,7 +52,7 @@ namespace eksamen2014
 
         public IEnumerable<Køretøj> SøgStortKørekort(double maksVægt)
         {
-            IEnumerable<Køretøj> køretøjer = LavKøretøjsListe();
+            IEnumerable<Køretøj> køretøjer = LavKøretøjsListe(_tilSalg);
 
             return køretøjer.Where(k => k.KørekortType == EnumKørekortType.C
                                         || k.KørekortType == EnumKørekortType.D
@@ -68,8 +65,7 @@ namespace eksamen2014
 
         public IEnumerable<Køretøj> SøgKørtPris(double maxKm, decimal maxPris)
         {
-            IEnumerable<SalgsObjekt> salgsobjekter = from keyValue in _tilSalg
-                                                     select keyValue.Value;
+            IEnumerable<SalgsObjekt> salgsobjekter = _tilSalg;
 
             IEnumerable<Køretøj> filterPris = salgsobjekter.Where(s =>
                 s.MinPris < maxPris).Select(s => s.Køretøj);
@@ -84,7 +80,7 @@ namespace eksamen2014
 
         public EnumEnergiklasse Gennemsnitlig()
         {
-            IEnumerable<Køretøj> køretøjer = LavKøretøjsListe();
+            IEnumerable<Køretøj> køretøjer = LavKøretøjsListe(_tilSalg);
             decimal average = køretøjer.Average(k => (decimal)k.Energiklasse);
 
             return (EnumEnergiklasse)Math.Floor(average);
@@ -92,7 +88,7 @@ namespace eksamen2014
 
         public IEnumerable<Køretøj> SøgPostnummer(int postnummer, int radius)
         {
-            IEnumerable<SalgsObjekt> salgsobjekter = _tilSalg.Select(x => x.Value).
+            IEnumerable<SalgsObjekt> salgsobjekter = _tilSalg.
                 Where(x => x.Sælger.Postnummer >= postnummer - radius && x.Sælger.Postnummer <= postnummer + radius);
 
             return from salgsobjekt in salgsobjekter
@@ -101,8 +97,8 @@ namespace eksamen2014
 
         public Auktionshus()
         {
-            _tilSalg = new Dictionary<int, SalgsObjekt>();
-            _solgte = new Dictionary<int, SalgsObjekt>();
+            _tilSalg = new List<SalgsObjekt>();
+            _solgte = new List<SalgsObjekt>();
         }
 
 
@@ -117,7 +113,7 @@ namespace eksamen2014
             SalgsObjekt salgsObjekt = new SalgsObjekt(k, s, minPris);
             int auktionsnummer = salgsObjekt.Autktionsnummer;
 
-            _tilSalg.Add(auktionsnummer, salgsObjekt);
+            _tilSalg.Add(salgsObjekt);
 
             salgsObjekt.notifikationsMetode += notifikationsMetode;
 
@@ -161,8 +157,8 @@ namespace eksamen2014
                 salgsObjekt.VindendeKøber.Handlende.Saldo -= salgsObjekt.HøjesteBud;
                 sælger.Handlende.Saldo += salgsObjekt.HøjesteBud - salær;
 
-                _tilSalg.Remove(auktionsNummer);
-                _solgte.Add(auktionsNummer, salgsObjekt);
+                _tilSalg.Remove(salgsObjekt);
+                _solgte.Add(salgsObjekt);
 
                 Profit += salær;
                 budAccepteret = true;
