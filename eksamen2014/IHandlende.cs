@@ -8,6 +8,8 @@ namespace eksamen2014
 {
     public interface IHandlende
     {
+        String Navn { get; set; }
+
         int ID { get; set; }
 
         decimal Saldo { get; set; }

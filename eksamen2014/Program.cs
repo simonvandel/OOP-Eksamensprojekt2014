@@ -35,54 +35,56 @@ namespace eksamen2014
             ErhvervPersonbil Berlingo = new ErhvervPersonbil("Citroën Berlingo", 2010, "XY54321");
             
             Lastbil scandia = new Lastbil("Scandia 5", 2005, "WQ18652");
+            scandia.Vægt = 2001;
 
             Bus BogBus = new Bus("Bog Bussen", 1950, "AA11111");
             BogBus.Vægt = 1000;
+            BogBus.Siddepladser = 15;
+            BogBus.HarToilet = true;
 
             List<Køretøj> garage = new List<Køretøj>();
 
-            garage.Add(autokamper2);
-            garage.Add(skoda);
-            garage.Add(audi);
-            garage.Add(Transporter);
             garage.Add(autokamper1);
+            garage.Add(autokamper2);
+            garage.Add(audi);
+            garage.Add(skoda);
+            garage.Add(Transporter);
+            garage.Add(Berlingo);
             garage.Add(scandia);
             garage.Add(BogBus);
 
             Auktionshus au = new Auktionshus();
 
-            Sælger Simon = new Sælger();
-            Simon.Handlende = new Privat(183101, 5000000);
-            Simon.Postnummer = 5000;
+            Sælger Jensen = new Sælger("Jensen", new Privat(183101, 5000000));
+            Jensen.Postnummer = 5000;
 
-            Sælger Sørensen = new Sælger();
+            Sælger Sørensen = new Sælger("Sørensen", new Firma(1231, 100000000));
             Sørensen.Postnummer = 8000;
-            Sørensen.Handlende = new Firma(1231, 100000000);
             
 
 
-            Køber Lars = new Køber();
-            Lars.Handlende = new Privat(11, 20000);
+            Køber Lars = new Køber("Lars", new Privat(11, 20000));
 
-            Køber Børge = new Køber();
-            Børge.Handlende = new Privat(11223, 1000000);
+            Køber Børge = new Køber("Børge", new Privat(11223, 1000000));
 
-            Køber Joakim = new Køber();
-            Joakim.Handlende = new Firma(1123, 200000000);
+            Køber Joakim = new Køber("Joakim", new Firma(1123, 200000000));
             
-            int auktionsnummer = au.SætTilSalg(garage[0], Simon, 10000);
-            au.SætTilSalg(garage[1], Simon, 10000);
-            au.SætTilSalg(garage[2], Sørensen, 10000);
-            au.SætTilSalg(garage[3], Sørensen, 10000);
-            au.SætTilSalg(garage[4], Simon, 500);
+            int auktionsnummer = au.SætTilSalg(garage[0], Jensen, 10000);
+            au.SætTilSalg(garage[1], Jensen, 20000);
+            au.SætTilSalg(garage[2], Sørensen, 30000);
+            au.SætTilSalg(garage[3], Sørensen, 100000);
+            au.SætTilSalg(garage[4], Jensen, 500);
+            au.SætTilSalg(garage[5], Sørensen, 15000);
+            au.SætTilSalg(garage[6], Sørensen, 5000);
+            au.SætTilSalg(garage[7], Jensen, 1000);
 
             
             // demo søg 1
-            Console.WriteLine("søger efter navn \"audi\"");
+            Console.WriteLine("Søger efter navn \"audi\"");
             SøgningsTest(au,au.SøgNavn("audi"));
 
             // demo søg 2 
-            Console.WriteLine("søger efter 10+ sæder og toilet"); 
+            Console.WriteLine("Søger efter 10+ sæder og toilet"); 
             SøgningsTest(au, au.SøgTransportMuligheder(10));
 
             // demo søg 3
@@ -90,28 +92,29 @@ namespace eksamen2014
             SøgningsTest(au, au.SøgStortKørekort(2000));
 
             // demo søg 4
-            Console.WriteLine("Under 1mil, og 50.000 km - sorteret");
+            Console.WriteLine("Under 1 million kroner, og under 50.000 km - sorteret efter kørt km");
             SøgningsTest(au, au.SøgKørtPris(1000, 5000000));
             
             // demo søg 5
-            Console.WriteLine("finder biler til salg indenfor radius");
+            Console.WriteLine("Søger efter biler til salg indenfor radius");
             SøgningsTest(au, au.SøgPostnummer(4000, 2000));
 
             // Gennemsnitlig
-            Console.WriteLine("Gennemsnitlig " + au.Gennemsnitlig());
+            Console.WriteLine("Gennemsnitlig energiklasse: " + au.Gennemsnitlig());
+            Console.WriteLine();
+            Console.WriteLine();
 
             au.ModtagBud(Lars, auktionsnummer, 15000);
             au.ModtagBud(Børge, auktionsnummer, 5000);
             au.ModtagBud(Joakim, auktionsnummer, 2000000);
 
-            if (au.AccepterBud(Simon, auktionsnummer))
-            {
-                Console.WriteLine("Bud accepteret");
-            }
-            
+            au.AccepterBud(Jensen, auktionsnummer);
+
+            Console.WriteLine();
+            Console.WriteLine("Viser alle solgte køretøjer");
             foreach (Køretøj k in au.GetSolgteEnumerable())
             {
-                Console.WriteLine(k.Navn);
+                Console.WriteLine(k);
             }
 
             Console.ReadLine();

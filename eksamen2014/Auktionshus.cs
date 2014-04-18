@@ -158,8 +158,8 @@ namespace eksamen2014
             {
                 decimal salær = UdregnSalær(salgsObjekt.HøjesteBud);
 
-                salgsObjekt.VindendeKøber.Handlende.Saldo -= salgsObjekt.HøjesteBud; //TODO flyt ind i køber
-                sælger.Handlende.Saldo += salgsObjekt.HøjesteBud - salær; //TODO flyt ind i sælger
+                salgsObjekt.VindendeKøber.Handlende.Saldo -= salgsObjekt.HøjesteBud;
+                sælger.Handlende.Saldo += salgsObjekt.HøjesteBud - salær;
 
                 _tilSalg.Remove(auktionsNummer);
                 _solgte.Add(auktionsNummer, salgsObjekt);
@@ -167,7 +167,7 @@ namespace eksamen2014
                 Profit += salær;
                 budAccepteret = true;
 
-                Console.WriteLine("bud fra " + salgsObjekt.VindendeKøber + " med " + salgsObjekt.HøjesteBud);
+                Console.WriteLine(sælger + " har accepteret bud fra " + salgsObjekt.VindendeKøber + " på " + salgsObjekt.HøjesteBud);
             }
 
             return budAccepteret;

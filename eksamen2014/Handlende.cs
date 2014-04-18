@@ -16,6 +16,8 @@ namespace eksamen2014
 
         protected decimal _Saldo;
 
+        public String Navn { get; set; }
+
         public int ID { get; set; }
         
         public decimal Saldo
@@ -29,6 +31,11 @@ namespace eksamen2014
         }
 
         public virtual decimal Kredit { get; set; }
+
+        public override string ToString()
+        {
+            return Navn;
+        }
 
     }
 }
