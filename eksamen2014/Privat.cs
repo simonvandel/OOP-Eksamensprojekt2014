@@ -16,7 +16,7 @@ namespace eksamen2014
             get { return 0; }
             set
             {
-                Console.WriteLine("Privat personer kan ikke have kredit");
+                throw new ArgumentOutOfRangeException("Privatpersoner har ikke kredit");
             }
         }
     }

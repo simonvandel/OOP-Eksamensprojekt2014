@@ -8,7 +8,6 @@ namespace eksamen2014
 {
     public abstract class Personbil : Køretøj
     {
-
         public Personbil(string navn, int årgang, string registreringsnummer, DimensionerBagagerum bagagerum)
             : this(navn, årgang, registreringsnummer)
         {
@@ -31,6 +30,4 @@ namespace eksamen2014
         public abstract int Sæder { get; set; }
         public DimensionerBagagerum Bagagerum { get; protected set; }
     }
-
-
 }

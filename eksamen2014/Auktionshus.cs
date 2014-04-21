@@ -228,10 +228,5 @@ namespace eksamen2014
 
             return salær;
         }
-
-
-
-
-
     }
 }

@@ -25,7 +25,7 @@ namespace eksamen2014
             get { return _Saldo; }
             set
             {
-                if (value + Kredit < 0) { throw new ArgumentOutOfRangeException("Må ikke væres minus"); }
+                if (value + Kredit < 0) { throw new ArgumentOutOfRangeException("Beløb er for lavt"); }
                 else { _Saldo = value; }
             }
         }
